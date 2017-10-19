@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Y = require('yttrium-server');
 const ah = require('./payloads/ah');
+const er = require('./payloads/er');
 
 const { $, server, router } = Y();
 
@@ -10,6 +11,7 @@ const airhorn = fs.readFileSync('./assets/airhorn.mp3');
 // init routes
 $.route('index')
   .append('<ah>')
+  .append('<er>')
   .append('<assets>');
 
 $.route('index > assets')
@@ -21,6 +23,12 @@ $.route('index > ah')
   .on('route', (e, req, res) => {
     e.stopPropagation();
     res.end(ah);
+  });
+
+$.route('index > er')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.end(er);
   });
 
 $.route('index > assets > airhorn')
