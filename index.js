@@ -3,6 +3,7 @@ const Y = require('yttrium-server');
 const ah = require('./payloads/ah');
 const er = require('./payloads/er');
 const al = require('./payloads/al');
+const ls = require('./payloads/ls');
 
 const { $, server, router } = Y();
 
@@ -14,6 +15,7 @@ $.route('index')
   .append('<ah>')
   .append('<er>')
   .append('<al>')
+  .append('<ls>')
   .append('<assets>');
 
 $.route('index > assets')
@@ -37,6 +39,12 @@ $.route('index > al')
   .on('route', (e, req, res) => {
     e.stopPropagation();
     res.end(al);
+  });
+
+$.route('index > ls')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.end(ls);
   });
 
 $.route('index > assets > airhorn')
