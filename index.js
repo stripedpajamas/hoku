@@ -4,11 +4,13 @@ const ah = require('./payloads/ah');
 const er = require('./payloads/er');
 const al = require('./payloads/al');
 const ls = require('./payloads/ls');
+const lm = require('./payloads/lm');
 
 const { $, server, router } = Y();
 
 // get assets
 const airhorn = fs.readFileSync('./assets/airhorn.mp3');
+const lawnmower = fs.readFileSync('./assets/lawnmower.png');
 
 // init routes
 $.route('index')
@@ -16,11 +18,12 @@ $.route('index')
   .append('<er>')
   .append('<al>')
   .append('<ls>')
+  .append('<lm>')
   .append('<assets>');
 
 $.route('index > assets')
-  .append('<airhorn>');
-
+  .append('<airhorn>')
+  .append('<lawnmower>');
 
 // handle routes
 $.route('index > ah')
@@ -47,11 +50,24 @@ $.route('index > ls')
     res.end(ls);
   });
 
+$.route('index > lm')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.end(lm);
+  });
+
 $.route('index > assets > airhorn')
   .on('route', (e, req, res) => {
     e.stopPropagation();
     res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
     res.end(airhorn);
+  });
+
+$.route('index > assets > lawnmower')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.writeHead(200, { 'Content-Type': 'image/png' });
+    res.end(lawnmower);
   });
 $(server).listen(process.env.PORT || 3000);
 
