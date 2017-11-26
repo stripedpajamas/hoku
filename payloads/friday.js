@@ -7,13 +7,14 @@ while [ true ]; do
     curl -sL hoku.me/assets/friday > /tmp/friday.out;
   fi
   # get the current date
-  tmpDate="${date}";
+  tmpDate="$(date)";
   # string parse the first argument of the date
   tmpDay="$( echo $tmpDate | head -n1 | awk '{print $1;}')";
   # if the day is friday, play friday!
-  if [ "$tmpDay" == "Sat" ]; then
+  if [ "$tmpDay" == "Fri" ]; then
     afplay /tmp/friday.out;
   fi
+  # sleep for a day and try again
   sleep 86400;
 done
 `
