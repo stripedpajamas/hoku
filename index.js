@@ -5,12 +5,15 @@ const er = require('./payloads/er');
 const al = require('./payloads/al');
 const ls = require('./payloads/ls');
 const lm = require('./payloads/lm');
+const np = require('./payloads/np');
+const friday = require('./payloads/friday');
 
 const { $, server, router } = Y();
 
 // get assets
 const airhorn = fs.readFileSync('./assets/airhorn.mp3');
 const lawnmower = fs.readFileSync('./assets/lawnmower.png');
+const friday = fs.readFileSync('./assets/friday.mp3');
 
 // init routes
 $.route('index')
@@ -19,11 +22,14 @@ $.route('index')
   .append('<al>')
   .append('<ls>')
   .append('<lm>')
+  .append('<np>')
+  .append('<friday>')
   .append('<assets>');
 
 $.route('index > assets')
   .append('<airhorn>')
-  .append('<lawnmower>');
+  .append('<lawnmower>')
+  .append('<friday>');
 
 // handle routes
 $.route('index > ah')
@@ -56,6 +62,12 @@ $.route('index > lm')
     res.end(lm);
   });
 
+$.route('index > np')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.end(np);
+  });
+
 $.route('index > assets > airhorn')
   .on('route', (e, req, res) => {
     e.stopPropagation();
@@ -68,6 +80,13 @@ $.route('index > assets > lawnmower')
     e.stopPropagation();
     res.writeHead(200, { 'Content-Type': 'image/png' });
     res.end(lawnmower);
+  });
+
+$.route('index > assets > friday')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
+    res.end(friday);
   });
 $(server).listen(process.env.PORT || 3000);
 
