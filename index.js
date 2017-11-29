@@ -6,7 +6,7 @@ const al = require('./payloads/al');
 const ls = require('./payloads/ls');
 const lm = require('./payloads/lm');
 const np = require('./payloads/np');
-const friday = require('./payloads/friday');
+const fr = require('./payloads/friday');
 
 const { $, server, router } = Y();
 
@@ -23,7 +23,7 @@ $.route('index')
   .append('<ls>')
   .append('<lm>')
   .append('<np>')
-  .append('<friday>')
+  .append('<fr>')
   .append('<assets>');
 
 $.route('index > assets')
@@ -66,6 +66,12 @@ $.route('index > np')
   .on('route', (e, req, res) => {
     e.stopPropagation();
     res.end(np);
+  });
+
+$.route('index > fr')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.end(fr);
   });
 
 $.route('index > assets > airhorn')
