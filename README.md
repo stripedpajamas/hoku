@@ -21,4 +21,4 @@ in their terminal, where `xx` is the two-letter identifier of the prank payload.
  
 
 ### contributing
-if you have an idea for a prank, go ahead and put in a PR :simple_smile:
+if you have an idea for a prank, go ahead and put in a PR :)
