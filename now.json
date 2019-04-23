@@ -1,5 +1,6 @@
 {
   "public": true,
+  "alias": ["hoku.me"],
   "type": "docker",
   "features": {
     "cloud": "v2"
