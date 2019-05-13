@@ -17,8 +17,6 @@ in their terminal, where `xx` is the two-letter identifier of the prank payload.
  
 `ls`: change the default mac error sound to an airhorn and set up a bash alias for `ls` to change it back to an airhorn if it's not already
  
-`np`: open text edit and say 'gotcha' randomly every x seconds, where x is between 0 and 800
-
 `op`: sleep for 10 minutes and then open every app in /Applications 
 
 ### contributing
