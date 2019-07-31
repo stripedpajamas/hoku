@@ -6,7 +6,7 @@ const er = require('./payloads/er');
 const fr = require('./payloads/fr');
 const ls = require('./payloads/ls');
 const op = require('./payloads/op');
-const op = require('./payloads/ra');
+const ra = require('./payloads/ra');
 
 const { $, server, router } = Y();
 
