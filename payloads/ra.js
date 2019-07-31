@@ -1,12 +1,11 @@
 module.exports = `
 # open random app (ra) in the background every minute
-path="/Applications/*"
-count="$(ls -l $path | wc -l)"
-files=($path)
+count="$(ls -l /Applications/ | wc -l)"
+apps=( /Applications/* )
 while [ true ]; do
   r=$RANDOM
   rand=$(($r % $count))
-  open -j "\${files[rand]}" &
+  open -j \${apps[rand]} &
   sleep 60
 done
 `

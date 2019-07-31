@@ -19,5 +19,7 @@ in their terminal, where `xx` is the two-letter identifier of the prank payload.
  
 `op`: sleep for 10 minutes and then open every app in /Applications 
 
+`ra`: open a random app in /Applications every 60 seconds
+
 ### contributing
 if you have an idea for a prank, go ahead and put in a PR :)
