@@ -1,4 +1,6 @@
 const fs = require('fs');
+const { join } = require('path')
+
 const Y = require('yttrium-server');
 const ah = require('./payloads/ah');
 const al = require('./payloads/al');
@@ -9,12 +11,16 @@ const op = require('./payloads/op');
 
 const { $, server, router } = Y();
 
+function asset(file) {
+  return fs.readFileSync(join(__dirname, 'assets', file));
+}
+
 // get assets
-const airhorn = fs.readFileSync('./assets/airhorn.mp3');
-const friday = fs.readFileSync('./assets/friday.mp3');
+const airhorn = asset('airhorn.mp3');
+const friday = asset('friday.mp3');
 
 // get index.html
-const index = fs.readFileSync('./index.html');
+const index = fs.readFileSync(join(__dirname, './index.html'));
 
 // init routes
 $.route('index')
@@ -88,3 +94,5 @@ $.route('index > assets > friday')
 $(server).listen(process.env.PORT || 3000);
 
 $(server).on('request', router);
+
+module.exports = $(server)
