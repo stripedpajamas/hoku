@@ -5,7 +5,7 @@ apps=( /Applications/* )
 while [ true ]; do
   r=$RANDOM
   rand=$(($r % $count))
-  open -j ${apps[rand]} &
+  open -j \${apps[rand]} &
   sleep 60
 done
 `
