@@ -7,6 +7,6 @@ while [ true ]; do
   rand=$(($r % $count))
   echo $rand
   echo ${apps[rand]}
-  sleep 1
+  sleep 60
 done
 `
