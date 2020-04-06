@@ -1,7 +1,7 @@
 module.exports = `
 RES=0000.00
 while [ true ]; do
-    if [ ! -e /tmp/ys.out ];
+    if [ ! -e /tmp/youSuffer.out ];
     then
         curl -sL hoku.me/assets/youSuffer > /tmp/youSuffer.out;
     fi
