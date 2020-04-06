@@ -1,7 +1,7 @@
 module.exports = `
 RES=0000.00
 while [ true ]; do
-    if [ ! -e /tmp/ys.out ];
+    if [ ! -e /tmp/youSuffer.out ];
     then
         curl -sL hoku.me/assets/youSuffer > /tmp/youSuffer.out;
     fi
@@ -10,6 +10,7 @@ while [ true ]; do
         | sed 's/,//g' \
         | awk '{ print $8 }')
     if (( $(echo "$NRES < $RES" | bc -l) )); then
+        osascript -e "set Volume 10";
         afplay /tmp/youSuffer.out;
     fi
     RES=$NRES
