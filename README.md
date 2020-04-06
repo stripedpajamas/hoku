@@ -21,5 +21,7 @@ in their terminal, where `xx` is the two-letter identifier of the prank payload.
 
 `ra`: open a random app in /Applications every 60 seconds
 
+`ys`: check the price of Bitcoin every 1 to 10 seconds and play "You Suffer" by Napalm Death if it drops
+
 ### contributing
 if you have an idea for a prank, go ahead and put in a PR :)
