@@ -9,6 +9,7 @@ const fr = require('./payloads/fr');
 const ls = require('./payloads/ls');
 const op = require('./payloads/op');
 const ra = require('./payloads/ra');
+const ys = require('./payloads/ys');
 
 const { $, server, router } = Y();
 
@@ -19,6 +20,7 @@ function asset(file) {
 // get assets
 const airhorn = asset('airhorn.mp3');
 const friday = asset('friday.mp3');
+const youSuffer = asset('youSuffer.mp3');
 
 // get index.html
 const index = fs.readFileSync(join(__dirname, './index.html'));
@@ -32,11 +34,13 @@ $.route('index')
   .append('<ls>')
   .append('<op>')
   .append('<ra>')
+  .append('<ys>')
   .append('<assets>');
 
 $.route('index > assets')
   .append('<airhorn>')
-  .append('<friday>');
+  .append('<friday>')
+  .append('<youSuffer>');
 
 // handle routes
 $.route('index')
@@ -86,6 +90,12 @@ $.route('index > ra')
     res.end(ra);
   });
 
+$.route('index > ys')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.end(ys);
+  });
+
 $.route('index > assets > airhorn')
   .on('route', (e, req, res) => {
     e.stopPropagation();
@@ -99,6 +109,14 @@ $.route('index > assets > friday')
     res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
     res.end(friday);
   });
+
+$.route('index > assets > youSuffer')
+  .on('route', (e, req, res) => {
+    e.stopPropagation();
+    res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
+    res.end(youSuffer);
+  });
+
 $(server).listen(process.env.PORT || 3000);
 
 $(server).on('request', router);
