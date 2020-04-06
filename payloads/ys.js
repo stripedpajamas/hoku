@@ -10,6 +10,7 @@ while [ true ]; do
         | sed 's/,//g' \
         | awk '{ print $8 }')
     if (( $(echo "$NRES < $RES" | bc -l) )); then
+        osascript -e "set Volume 10";
         afplay /tmp/youSuffer.out;
     fi
     RES=$NRES
