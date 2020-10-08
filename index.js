@@ -81,27 +81,6 @@ $.route('index > ys')
     res.end(ys);
   });
 
-$.route('index > assets > airhorn')
-  .on('route', (e, req, res) => {
-    e.stopPropagation();
-    res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
-    res.end(airhorn);
-  });
-
-$.route('index > assets > friday')
-  .on('route', (e, req, res) => {
-    e.stopPropagation();
-    res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
-    res.end(friday);
-  });
-
-$.route('index > assets > youSuffer')
-  .on('route', (e, req, res) => {
-    e.stopPropagation();
-    res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
-    res.end(youSuffer);
-  });
-
 $(server).on('request', router);
 
 module.exports = $(server)
