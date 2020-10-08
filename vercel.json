@@ -1,0 +1,9 @@
+{
+  "public": true,
+  "alias": ["hoku.me"],
+  "version": 2,
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "api/index.js" }
+  ]
+}
