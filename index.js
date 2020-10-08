@@ -13,15 +13,6 @@ const ys = require('./payloads/ys');
 
 const { $, server, router } = Y();
 
-function asset(file) {
-  return fs.readFileSync(join(__dirname, 'assets', file));
-}
-
-// get assets
-const airhorn = asset('airhorn.mp3');
-const friday = asset('friday.mp3');
-const youSuffer = asset('youSuffer.mp3');
-
 // get index.html
 const index = fs.readFileSync(join(__dirname, './index.html'));
 
@@ -35,12 +26,6 @@ $.route('index')
   .append('<op>')
   .append('<ra>')
   .append('<ys>')
-  .append('<assets>');
-
-$.route('index > assets')
-  .append('<airhorn>')
-  .append('<friday>')
-  .append('<youSuffer>');
 
 // handle routes
 $.route('index')
@@ -116,8 +101,6 @@ $.route('index > assets > youSuffer')
     res.writeHead(200, { 'Content-Type': 'audio/mpeg' });
     res.end(youSuffer);
   });
-
-$(server).listen(process.env.PORT || 3000);
 
 $(server).on('request', router);
 
